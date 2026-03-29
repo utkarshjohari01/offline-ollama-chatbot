@@ -2,6 +2,10 @@
 
 A full-stack local chatbot built with Python, FastAPI, SQLite, and a browser UI that streams responses from your offline Ollama models.
 
+## Chatbot UI
+
+![Chatbot UI](images/chatbot-ui.png)
+
 ## Features
 
 - Fully local backend in Python
@@ -10,6 +14,15 @@ A full-stack local chatbot built with Python, FastAPI, SQLite, and a browser UI 
 - Conversation sidebar with saved sessions
 - Model picker and editable system prompt
 - SQLite persistence for chats
+
+## Tech Stack
+
+- Python
+- FastAPI
+- Ollama
+- Qwen2.5 LLM
+- SQLite
+- HTML / CSS / JavaScript
 
 ## Run It
 
@@ -51,13 +64,3 @@ static/styles.css
 static/app.js
 data/chatbot.db   # created automatically on first run
 ```
-
-## Next Up
-
-Good advanced upgrades for this project:
-
-- Add Retrieval-Augmented Generation with local files
-- Support image-capable multimodal models
-- Add voice input/output offline
-- Add per-chat parameters like temperature and context size
-- Package it as a desktop app with Tauri or Electron
