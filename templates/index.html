@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline Ollama Chatbot</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <p class="eyebrow">Local AI Studio</p>
+                <h1>Offline Chat</h1>
+                <button id="new-chat-btn" class="primary-button">New Chat</button>
+            </div>
+
+            <div class="panel">
+                <label for="model-select">Model</label>
+                <select id="model-select"></select>
+
+                <label for="system-prompt">System Prompt</label>
+                <textarea id="system-prompt" rows="5">{{ default_system_prompt }}</textarea>
+            </div>
+
+            <div class="panel conversation-panel">
+                <div class="panel-title-row">
+                    <h2>Conversations</h2>
+                    <span id="health-pill" class="health-pill">Checking</span>
+                </div>
+                <div id="conversation-list" class="conversation-list"></div>
+            </div>
+        </aside>
+
+        <main class="chat-stage">
+            <section id="hero-empty" class="hero-empty">
+                <p class="eyebrow">Private, local, offline-first</p>
+                <h2>Build with your own models.</h2>
+                <p>
+                    Your chats stay on this machine. Choose a model, open a conversation,
+                    and stream responses directly from Ollama.
+                </p>
+            </section>
+
+            <section class="chat-panel">
+                <header class="chat-header">
+                    <div>
+                        <p class="eyebrow">Current Session</p>
+                        <h2 id="chat-title">New chat</h2>
+                    </div>
+                    <button id="delete-chat-btn" class="ghost-button" disabled>Delete Chat</button>
+                </header>
+
+                <div id="messages" class="messages"></div>
+
+                <form id="composer" class="composer">
+                    <textarea
+                        id="message-input"
+                        placeholder="Ask something complex. Shift+Enter for a new line."
+                        rows="1"
+                    ></textarea>
+                    <div class="composer-actions">
+                        <p class="composer-hint">Streaming locally through Ollama</p>
+                        <button type="submit" id="send-btn" class="primary-button">Send</button>
+                    </div>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <template id="message-template">
+        <article class="message">
+            <div class="message-role"></div>
+            <div class="message-body"></div>
+        </article>
+    </template>
+
+    <script>
+        window.APP_CONFIG = {
+            defaultModel: "{{ default_model }}",
+        };
+    </script>
+    <script src="/static/app.js"></script>
+</body>
+</html>
